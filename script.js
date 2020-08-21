@@ -3,25 +3,25 @@ const button = document.getElementById('play');
 
 const ITEMS = [
   "bird1",  
-  "bird2",
-  "bird3",
-  "bird4",
-  "bird5",
-  "bird6",
-  "bird7",
-  "bird8",
-  "bird9",
-  "bird10",
+  // "bird2",
+  // "bird3",
+  // "bird4",
+  // "bird5",
+  // "bird6",
+  // "bird7",
+  // "bird8",
+  // "bird9",
+  // "bird10",
   "bird1",  
-  "bird2",
-  "bird3",
-  "bird4",
-  "bird5",
-  "bird6",
-  "bird7",
-  "bird8",
-  "bird9",
-  "bird10"
+  // "bird2",
+  // "bird3",
+  // "bird4",
+  // "bird5",
+  // "bird6",
+  // "bird7",
+  // "bird8",
+  // "bird9",
+  // "bird10"
 ];
 
 let cardOne;
@@ -100,26 +100,9 @@ function handleCardClick(event) {
   }
   score.moves++;
   if (isGameOver()) {
-    setTimeout(function() {
-      alert(
-        `
-        You Win! 
-        Score: ${score.moves} moves!
-        Best Score: ${localStorage.bestScore} moves!
-        `
-      );
-    }, 200);
-    // setup button to restart game
-    button.innerText = 'Restart';
-    button.toggleAttribute('disabled');
-    button.classList.toggle('hide');
-    
-    // save score in local storage
-    if (!localStorage.bestScore) {
-      localStorage.setItem("bestScore", score.moves);
-    } else if (parseInt(localStorage.bestScore) > score.moves) {
-      localStorage.setItem("bestScore", score.moves)
-    }
+    resetButton();
+    endGameMessage();
+    saveScore();
   }
 }
 
@@ -138,14 +121,7 @@ button.addEventListener('click', function(e) {
     button.classList.toggle('hide');
     button.toggleAttribute('disabled');
   } else if (isGameOver()) {
-    // restart game
-    button.classList.toggle('hide');
-    toggleCardVisibility();
-    setTimeout(function() {
-      gameContainer.innerHTML = '';
-      startGame();
-      toggleCardVisibility();
-    }, 2000);
+    restartGame();
   }
   
 })
@@ -158,6 +134,45 @@ function startGame() {
     matches: 0,
     totalMatches: ITEMS.length/2
   }
+}
+
+function endGameMessage() {
+  setTimeout(function() {
+    alert(
+      `
+      You Win! 
+      Score: ${score.moves} moves!
+      Best Score: ${localStorage.bestScore} moves!
+      `
+    );
+    }, 200);
+}
+
+function resetButton() {
+  // setup button to restart game
+  button.innerText = 'Restart';
+  button.toggleAttribute('disabled');
+  button.classList.toggle('hide');
+}
+
+function saveScore() {
+  // save score in local storage
+  if (!localStorage.bestScore) {
+    localStorage.setItem("bestScore", score.moves);
+  } else if (parseInt(localStorage.bestScore) > score.moves) {
+    localStorage.setItem("bestScore", score.moves)
+  }
+}
+
+function restartGame() {
+  button.classList.toggle('hide');
+  toggleCardVisibility();
+  setTimeout(function() {
+    gameContainer.innerHTML = '';
+    button.toggleAttribute('disabled');
+    startGame();
+    toggleCardVisibility();
+  }, 2000);
 }
 
 // when the DOM loads
