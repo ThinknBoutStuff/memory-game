@@ -4,6 +4,10 @@ body {
   justify-items: center;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 #game {
   display: flex;
   flex-wrap: wrap;
@@ -13,8 +17,8 @@ body {
 
 #game > div {
   border: 1px solid black;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   margin: 5px;
   display: inline-block;
   opacity: 0;
@@ -31,4 +35,10 @@ body {
 .hide {
   opacity: 0;
   transition: opacity 0.5s linear;
+}
+
+#play {
+  width: 25vw;
+  height: 8vh;
+  font-size: 1.5rem;
 }
