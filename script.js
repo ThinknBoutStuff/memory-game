@@ -3,25 +3,25 @@ const button = document.getElementById('play');
 
 const ITEMS = [
   "bird1",  
-  // "bird2",
-  // "bird3",
-  // "bird4",
-  // "bird5",
-  // "bird6",
-  // "bird7",
-  // "bird8",
-  // "bird9",
-  // "bird10",
+  "bird2",
+  "bird3",
+  "bird4",
+  "bird5",
+  "bird6",
+  "bird7",
+  "bird8",
+  "bird9",
+  "bird10",
   "bird1",  
-  // "bird2",
-  // "bird3",
-  // "bird4",
-  // "bird5",
-  // "bird6",
-  // "bird7",
-  // "bird8",
-  // "bird9",
-  // "bird10"
+  "bird2",
+  "bird3",
+  "bird4",
+  "bird5",
+  "bird6",
+  "bird7",
+  "bird8",
+  "bird9",
+  "bird10"
 ];
 
 let cardOne;
